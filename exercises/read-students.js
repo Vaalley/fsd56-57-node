@@ -19,7 +19,22 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   // 1bis. Lecture synchrone pour la suite
   try {
     const syncData = fs.readFileSync(filePath, 'utf8');
-    const arr = JSON.parse(syncData);
+    let arr = JSON.parse(syncData);
+    // Ajout des nouveaux étudiants (évite doublons si relancé)
+    const newStudents = [
+      { name: "Sonia Paris", notes: [18], address: "Paris" },
+      { name: "Clarisse Marseille", notes: [17], address: "Marseille" }
+    ];
+    // Ajoute seulement si pas déjà présents
+    for (const ns of newStudents) {
+      if (!arr.some(s => s.name && s.name.toUpperCase() === ns.name.toUpperCase())) {
+        arr.push(ns);
+      }
+    }
+    // Met tous les noms en majuscules
+    arr = arr.map(obj => ({ ...obj, name: obj.name ? obj.name.toUpperCase() : null }));
+    // Réécrit le fichier
+    fs.writeFileSync(filePath, JSON.stringify(arr, null, 2), 'utf8');
     // 4. Création des objets student avec calcul de la moyenne
     const students = arr.map(obj => {
       const note = Array.isArray(obj.notes) ? obj.notes.reduce((a, b) => a + b, 0) / obj.notes.length : null;
@@ -38,6 +53,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
     console.table([best]);
     console.log('\nTous les étudiants (triés par moyenne décroissante):');
     console.table(students);
+    console.log('\nNouveaux étudiants ajoutés et noms mis en majuscules. Fichier mis à jour.');
   } catch (e) {
     console.error('Erreur lors de la lecture ou du parsing synchrone:', e.message);
   }
