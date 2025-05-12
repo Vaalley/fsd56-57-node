@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "guess-number": "node exercises/guess-number.js"
+    "guess-number": "node exercises/guess-number.js",
+    "read-students": "node exercises/read-students.js"
   },
   "keywords": [],
   "author": "",
