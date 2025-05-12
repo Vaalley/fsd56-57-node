@@ -2,4 +2,5 @@
 
 ## scripts to run exercises:
 
-- guess-number : `run the guess number game`
+- guess-number : `npm run guess-number`
+- read-students : `npm run read-students`
