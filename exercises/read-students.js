@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(__dirname, '../Data/student.txt');
+const filePath = path.join(__dirname, "..", "Data", "student.txt");
 
 // 1. Lecture asynchrone du fichier JSON
 fs.readFile(filePath, 'utf8', (err, data) => {

@@ -4,3 +4,4 @@
 
 - guess-number : `npm run guess-number`
 - read-students : `npm run read-students`
+- student-app : `npm run student-app`

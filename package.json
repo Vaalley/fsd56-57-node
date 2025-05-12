@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "guess-number": "node exercises/guess-number.js",
-    "read-students": "node exercises/read-students.js"
+    "read-students": "node exercises/read-students.js",
+    "student-app": "node exercises/student-app.js"
   },
   "keywords": [],
   "author": "",
