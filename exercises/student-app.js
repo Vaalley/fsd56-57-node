@@ -1,8 +1,15 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
 const filePath = path.join(__dirname, '..', 'data', 'student.json');
+
+// Mentions depuis .env
+const MENTION_PASSABLE = process.env.MENTION_PASSABLE;
+const MENTION_ASSEZ_BIEN = process.env.MENTION_ASSEZ_BIEN;
+const MENTION_BIEN = process.env.MENTION_BIEN;
+const MENTION_TRES_BIEN = process.env.MENTION_TRES_BIEN;
 
 function loadStudents() {
   try {
@@ -24,6 +31,7 @@ function showHelp() {
   console.log('  list                Affiche la liste des noms d\'élèves.');
   console.log('  find <nom>          Affiche les infos d\'un élève.');
   console.log('  more <note>         Affiche les élèves avec une moyenne > note.');
+  console.log('  mention <nom>       Affiche la mention attribuée à un élève selon sa moyenne.');
   console.log('  help                Affiche cette aide.');
   console.log('  exit                Quitte le programme.');
 }
@@ -102,6 +110,26 @@ function handleCommand(input, rl) {
           });
         }
       });
+      break;
+    case 'mention':
+      if (!args[1]) {
+        console.log('Veuillez préciser un nom.');
+        break;
+      }
+      const nomMention = args.slice(1).join(' ').toUpperCase();
+      const eleveMention = students.find(s => s.name.toUpperCase() === nomMention);
+      if (!eleveMention) {
+        console.log('Aucun élève trouvé avec ce nom.');
+        break;
+      }
+      const moy = moyenne(eleveMention.notes);
+      let mention = '';
+      if (moy >= 10 && moy <= 12) mention = MENTION_PASSABLE;
+      else if (moy > 12 && moy <= 14) mention = MENTION_ASSEZ_BIEN;
+      else if (moy > 14 && moy <= 16) mention = MENTION_BIEN;
+      else if (moy > 16 && moy <= 20) mention = MENTION_TRES_BIEN;
+      else mention = 'Aucune mention';
+      console.log(`\nMention de ${eleveMention.name} : ${mention} (Moyenne : ${moy})`);
       break;
     case 'help':
       showHelp();
