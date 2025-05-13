@@ -6,3 +6,4 @@
 - read-students : `npm run read-students`
 - student-app : `npm run student-app`
 - customer : `npm run customer`
+- chifoumi : `npm run chifoumi`

@@ -7,7 +7,8 @@
     "guess-number": "node exercises/guess-number.js",
     "read-students": "node exercises/read-students.js",
     "student-app": "node exercises/student-app.js",
-    "customer": "node exercises/customer/index.js"
+    "customer": "node exercises/customer/index.js",
+    "chifoumi": "node exercises/chifoumi.js"
   },
   "keywords": [],
   "author": "",
