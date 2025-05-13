@@ -1,4 +1,3 @@
-// Import de la fonction métier
 const { calculerPrixTTC } = require('./utils');
 
 const priceHT = [
@@ -7,7 +6,6 @@ const priceHT = [
     { name : "Rasberry", priceHT : 2.5, priceTTC : null },
 ];
 
-// Ajout du prix TTC à chaque élément
 priceHT.forEach(item => {
     item.priceTTC = calculerPrixTTC(item.priceHT);
 });
