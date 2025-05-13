@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const readline = require('readline');
 
 const filePath = path.join(__dirname, '..', 'data', 'student.json');
 
@@ -27,7 +28,15 @@ function showHelp() {
   console.log('  exit                Quitte le programme.');
 }
 
-function handleCommand(input) {
+function saveStudents(students) {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(students, null, 2), 'utf8');
+  } catch (e) {
+    console.error('Erreur lors de la sauvegarde du fichier student.json:', e.message);
+  }
+}
+
+function handleCommand(input, rl) {
   const students = loadStudents();
   const args = input.trim().split(/\s+/);
   const cmd = args[0]?.toLowerCase();
@@ -72,6 +81,28 @@ function handleCommand(input) {
         });
       }
       break;
+    case 'addnote':
+      rl.question('Nom de l\'élève : ', (nomSaisi) => {
+        const studentsList = loadStudents();
+        const idx = studentsList.findIndex(s => s.name.toUpperCase() === nomSaisi.trim().toUpperCase());
+        if (idx === -1) {
+          console.log('Aucun élève trouvé avec ce nom.');
+          rl.prompt();
+        } else {
+          rl.question('Note à ajouter : ', (noteSaisie) => {
+            const note = Number(noteSaisie);
+            if (isNaN(note)) {
+              console.log('Veuillez entrer une note numérique.');
+            } else {
+              studentsList[idx].notes.push(note);
+              saveStudents(studentsList);
+              console.log(`Note ${note} ajoutée à ${studentsList[idx].name}.`);
+            }
+            rl.prompt();
+          });
+        }
+      });
+      break;
     case 'help':
       showHelp();
       break;
@@ -85,10 +116,20 @@ function handleCommand(input) {
 
 console.log('Bienvenue dans le système de gestion des élèves !');
 showHelp();
-process.stdout.write('> ');
 
-process.stdin.on('data', chunk => {
-  const input = chunk.toString().trim();
-  handleCommand(input);
-  process.stdout.write('> ');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: '> '
+});
+
+rl.prompt();
+rl.on('line', (input) => {
+  handleCommand(input, rl);
+  rl.prompt();
+});
+
+rl.on('close', () => {
+  console.log('Au revoir !');
+  process.exit(0);
 });
