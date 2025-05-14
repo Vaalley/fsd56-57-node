@@ -8,7 +8,8 @@
     "read-students": "node exercises/read-students.js",
     "student-app": "node exercises/student-app.js",
     "customer": "node exercises/customer/index.js",
-    "chifoumi": "node exercises/chifoumi.js"
+    "chifoumi": "node exercises/chifoumi.js",
+    "node-server": "node exercises/node-server/src/app.js"
   },
   "keywords": [],
   "author": "",
