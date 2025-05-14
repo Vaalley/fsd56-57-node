@@ -9,7 +9,8 @@
     "student-app": "node exercises/student-app.js",
     "customer": "node exercises/customer/index.js",
     "chifoumi": "node exercises/chifoumi.js",
-    "node-server": "node exercises/node-server/src/app.js"
+    "node-server-shuffle": "node exercises/node-server-shuffle/src/app.js",
+    "node-server-user": "node exercises/node-server-user/src/app.js"
   },
   "keywords": [],
   "author": "",

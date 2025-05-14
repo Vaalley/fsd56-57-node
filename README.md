@@ -7,4 +7,5 @@
 - student-app : `npm run student-app`
 - customer : `npm run customer`
 - chifoumi : `npm run chifoumi`
-- node-server : `npm run node-server`
+- node-server-shuffle : `npm run node-server-shuffle`
+- node-server-user : `npm run node-server-user`
