@@ -1,0 +1,9 @@
+div.user-card
+    h4 #{user.name.first} #{user.name.last.toUpperCase()} 
+        small (#{user.age} ans)
+    p Né le #{user.birthdate.toLocaleDateString('fr-FR')}
+    p
+        | Vit à 
+        strong #{user.location.city}, #{user.location.zipcode}
+    if user.isAdmin
+        span.badge-admin Est administrateur

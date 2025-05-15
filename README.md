@@ -10,3 +10,4 @@
 - node-server-shuffle : `npm run node-server-shuffle`
 - node-server-user : `npm run node-server-user`
 - pug1 : `npm run pug1`
+- pug2 : `npm run pug2`
