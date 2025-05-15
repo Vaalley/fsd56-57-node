@@ -13,3 +13,4 @@
 - pug2 : `npm run pug2`
 - pug3 : `npm run pug3`
 - pug-about-me : `npm run pug-about-me`
+- pug-server : `npm run pug-server`

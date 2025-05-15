@@ -1,0 +1,14 @@
+extends layout.pug
+
+block content
+  .container
+    h1 Contact
+    form(action="/contact" method="POST")
+      div
+        label(for="email") Email :
+        input#email(type="email" name="email" required)
+      div
+        label(for="message") Message :
+        textarea#message(name="message" rows="5" required)
+      div
+        button(type="submit") Envoyer
