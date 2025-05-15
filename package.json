@@ -10,7 +10,8 @@
     "customer": "node exercises/customer/index.js",
     "chifoumi": "node exercises/chifoumi.js",
     "node-server-shuffle": "node exercises/node-server-shuffle/src/app.js",
-    "node-server-user": "node exercises/node-server-user/src/app.js"
+    "node-server-user": "node exercises/node-server-user/src/app.js",
+    "pug1": "node exercises/pug1.js"
   },
   "keywords": [],
   "author": "",
