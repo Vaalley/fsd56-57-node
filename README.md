@@ -11,3 +11,4 @@
 - node-server-user : `npm run node-server-user`
 - pug1 : `npm run pug1`
 - pug2 : `npm run pug2`
+- pug3 : `npm run pug3`
