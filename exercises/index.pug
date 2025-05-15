@@ -1,6 +1,8 @@
 extends layout.pug
 
 block content
+  if toast
+    .toast(style="background:#4caf50;color:white;padding:1em;margin-bottom:1em;border-radius:.5em;")= toast
   .container
     h1 Jean DUPONT
     p Bienvenue sur mon portfolio
