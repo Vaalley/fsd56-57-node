@@ -1,0 +1,29 @@
+doctype html
+html(lang='fr')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Gestion des Étudiants - Édition
+    link(rel='stylesheet', href='/assets/css/style.css')
+  body
+    h1 Modifier l'étudiant
+    
+    nav
+      a(href='/', class=path === '/' ? 'active' : '') Accueil
+      a(href='/users', class=path === '/users' ? 'active' : '') Liste des Étudiants
+
+    form(action=`/update/${studentIndex}`, method='POST')
+      div
+        label(for='name') Nom :
+        input(type='text', id='name', name='name', value=student.name, required)
+      
+      div
+        label(for='birth') Date de naissance :
+        input(type='date', id='birth', name='birth', value=student.birth, required)
+      
+      button(type='submit') Mettre à jour
+      a(href='/users' style='margin-left: 10px;')
+        button(type='button') Annuler
+    
+    if message
+      div.message(class=messageType)= message

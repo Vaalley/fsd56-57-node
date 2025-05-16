@@ -15,7 +15,8 @@
     "pug2": "node exercises/pug2.js",
     "pug3": "node exercises/pug3.js",
     "pug-about-me": "node exercises/pug-about-me.js",
-    "pug-server": "node exercises/pug-server.js"
+    "pug-server": "node exercises/pug-server.js",
+    "final": "node exercises/final/server.js"
   },
   "keywords": [],
   "author": "",

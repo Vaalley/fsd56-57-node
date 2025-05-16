@@ -1,0 +1,29 @@
+doctype html
+html(lang='fr')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Gestion des Étudiants - Liste
+    link(rel='stylesheet', href='/assets/css/style.css')
+  body
+    h1 Liste des Étudiants
+    
+    nav
+      a(href='/', class=path === '/' ? 'active' : '') Accueil
+      a(href='/users', class=path === '/users' ? 'active' : '') Liste des Étudiants
+
+    if students && students.length > 0
+      ul
+        each student, index in students
+          li
+            span #{student.name} - Né(e) le #{new Date(student.birth).toLocaleDateString('fr-FR')}
+            .actions
+              a(href=`/edit/${index}`)
+                button.edit-btn Modifier
+              form(action=`/delete/${index}`, method='POST', style='display: inline;')
+                button.delete-btn(type='submit') Supprimer
+    else
+      p Aucun étudiant enregistré pour le moment.
+    
+    if message
+      div.message(class=messageType)= message

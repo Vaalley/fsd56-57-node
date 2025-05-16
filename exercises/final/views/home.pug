@@ -1,0 +1,29 @@
+doctype html
+html(lang='fr')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Gestion des Étudiants - Accueil
+    link(rel='stylesheet', href='/assets/css/style.css')
+  body
+    h1 Gestion des Étudiants
+    
+    nav
+      a(href='/', class=path === '/' ? 'active' : '') Accueil
+      a(href='/users', class=path === '/users' ? 'active' : '') Liste des Étudiants
+
+    h2 Ajouter un nouvel étudiant
+    
+    form(action='/add-student', method='POST')
+      div
+        label(for='name') Nom :
+        input(type='text', id='name', name='name', required)
+      
+      div
+        label(for='birth') Date de naissance :
+        input(type='date', id='birth', name='birth', required)
+      
+      button(type='submit') Ajouter l'étudiant
+    
+    if message
+      div.message(class=messageType)= message
